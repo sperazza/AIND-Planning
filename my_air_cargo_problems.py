@@ -59,8 +59,26 @@ class AirCargoProblem(Problem):
             '''
             loads = []
             # TODO create all load ground actions from the domain Load action
+            for a in self.airports:
+                for c in self.cargos:
+                    for p in self.planes:
+                        precond_pos = [expr("At({}, {})".format(c, a)),
+                                       ]
+                        precond_neg = []
+                        effect_add = [expr("In({}, {})".format(c, p))]
+                        effect_rem = [expr("At({}, {})".format(c, a))]
+                        fly = Action(expr("Load({}, {}, {})".format(c, p, a)),
+                                     [precond_pos, precond_neg],
+                                     [effect_add, effect_rem])
+                        loads.append(fly)
             return loads
-
+        """
+            precond_pos = [expr("At(c, a)"), expr("At(p, a)"), expr("Cargo(c)"), expr("Plane(p)"), expr("Airport(a)")]
+            precond_neg = []
+            effect_add = [expr("In(c, p)")]
+            effect_rem = [expr("At(c, a)")]
+            load = Action(expr("Load(c, p, a)"), [precond_pos, precond_neg], [effect_add, effect_rem])
+        """
         def unload_actions():
             '''Create all concrete Unload actions and return a list
 
