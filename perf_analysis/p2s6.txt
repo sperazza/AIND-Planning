@@ -1,0 +1,18 @@
+andrew@zenbookUbuntu:~/Dropbox/_UDACITY/AIND/AIND-Planning$ ~/Downloads/pypy3-v5.7.1-linux64/bin/pypy3 run_search.py -p2 -s6
+
+Solving Air Cargo Problem 2 using recursive_best_first_search with h_1...
+
+Expansions   Goal Tests   New Nodes
+ 70664634    70664635   637813875 
+
+Plan length: 9  Time elapsed in seconds: 36872.279383007
+Load(C1, P1, SFO)
+Fly(P1, SFO, ATL)
+Load(C3, P1, ATL)
+Fly(P1, ATL, JFK)
+Load(C2, P1, JFK)
+UnLoad(C1, P1, JFK)
+Fly(P1, JFK, SFO)
+UnLoad(C2, P1, SFO)
+UnLoad(C3, P1, SFO)
+
